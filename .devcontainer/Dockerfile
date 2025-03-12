@@ -1,17 +1,7 @@
-# Use the official Python image from the Docker Hub
-FROM python:3.9-slim
+# Note: You can use any Debian/Ubuntu based image you want.
+FROM mcr.microsoft.com/devcontainers/python:3.11-bookworm
 
-# Set the working directory in the container
-WORKDIR /workspace
 
-# Copy the requirements file into the container
-COPY requirements.txt .
-
-# Install the required packages
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the entire project into the container
-COPY . .
-
-# Set the command to run the application
-CMD ["python", "src/studio/app.py"]
+# [Optional] Uncomment this section to install additional OS packages.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends <your-package-list-here>
