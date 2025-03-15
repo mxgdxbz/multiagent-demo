@@ -25,18 +25,12 @@
 			"installTools": true,
 			"installJupyterlab": true,
 			"installIPython": true,
-			"installPoetry": true,
-			"packages": "autogen-agentchat autogen-ext[openai] autogenstudio"
+			"installPoetry": false,
 		}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "bash .devcontainer/startup.sh",
-
 	// Connect as root user
 	"remoteUser": "root",
+	"postCreateCommand": "bash .devcontainer/startup.sh",
 
 	"customizations": {
 		"vscode": {

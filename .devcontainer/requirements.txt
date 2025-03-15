@@ -1,5 +1,0 @@
-streamlit
-openai
-autogen-agentchat
-autogen-ext[openai]
-autogenstudio
