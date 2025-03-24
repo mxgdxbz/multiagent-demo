@@ -4,12 +4,13 @@ from autogen_ext.models.openai import OpenAIChatCompletionClient
 from autogen_ext.agents.web_surfer import MultimodalWebSurfer
 from autogen_agentchat.conditions import TextMentionTermination
 from autogen_core.models import ModelInfo
+import os
 
 agent = AssistantAgent(
     name="weather_agent",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
-        api_key="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",
+        api_key=os.environ['API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
     ),
@@ -19,7 +20,7 @@ surfer = MultimodalWebSurfer(
     "WebSurfer",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
-        api_key="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",
+        api_key=os.environ['API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
     ),

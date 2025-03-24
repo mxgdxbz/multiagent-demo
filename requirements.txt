@@ -1,5 +1,6 @@
 streamlit
 openai
+jupyter
 autogen-agentchat
 autogen-ext[openai,magentic_one]
 autogenstudio

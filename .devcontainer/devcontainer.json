@@ -23,7 +23,7 @@
 	},
 	// Connect as root user
 	"remoteUser": "root",
-	"postCreateCommand": "bash .devcontainer/startup.sh",
+	"postCreateCommand": "bash startup.sh",
 
 	"customizations": {
 		"vscode": {
