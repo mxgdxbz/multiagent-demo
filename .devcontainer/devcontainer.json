@@ -19,14 +19,7 @@
 			"dockerDashComposeVersion": "none"
 		},
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
-		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/python:1": {
-			"version": "3.11",
-			"installTools": true,
-			"installJupyterlab": true,
-			"installIPython": true,
-			"installPoetry": false,
-		}
+		"ghcr.io/devcontainers/features/git:1": {}
 	},
 	// Connect as root user
 	"remoteUser": "root",

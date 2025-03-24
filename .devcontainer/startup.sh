@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # python setup
-pushd python
+uv venv
 source .venv/bin/activate
 echo "export PATH=$PATH" >> ~/.bashrc
-popd
+uv pip install -r requirements.txt
+

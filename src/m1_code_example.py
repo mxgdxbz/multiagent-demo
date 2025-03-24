@@ -1,0 +1,83 @@
+from autogen_agentchat.agents import AssistantAgent, CodeExecutorAgent, UserProxyAgent
+from autogen_ext.models.openai import OpenAIChatCompletionClient
+from autogen_ext.agents.web_surfer import MultimodalWebSurfer
+from autogen_agentchat.conditions import TextMentionTermination
+from autogen_core.models import ModelInfo
+from autogen_agentchat.teams import MagenticOneGroupChat
+from autogen_ext.agents.file_surfer import FileSurfer
+from autogen_ext.agents.magentic_one import MagenticOneCoderAgent
+from autogen_ext.code_executors.local import LocalCommandLineCodeExecutor
+
+fs = FileSurfer(
+    "FileSurfer",
+    model_client=OpenAIChatCompletionClient(
+        model="deepseek/deepseek-r1:free",
+        api_key="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",
+        base_url="https://openrouter.ai/api/v1",
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+    ),
+)
+
+ws = MultimodalWebSurfer(
+    "WebSurfer",
+    model_client=OpenAIChatCompletionClient(
+        model="deepseek/deepseek-r1:free",
+        api_key="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",
+        base_url="https://openrouter.ai/api/v1",
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+    ),
+)
+
+coder = MagenticOneCoderAgent(
+    "Coder",
+    model_client=OpenAIChatCompletionClient(
+        model="deepseek/deepseek-r1:free",
+        api_key="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",
+        base_url="https://openrouter.ai/api/v1",
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+    ),
+)
+
+executor = CodeExecutorAgent(
+    "Executor",
+    code_executor=LocalCommandLineCodeExecutor(),
+)
+
+user_proxy = UserProxyAgent("User")
+
+agent = AssistantAgent(
+    name="weather_agent",
+    model_client=OpenAIChatCompletionClient(
+        model="deepseek/deepseek-r1:free",
+        api_key="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",
+        base_url="https://openrouter.ai/api/v1",
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+    ),
+)
+
+surfer = MultimodalWebSurfer(
+    "WebSurfer",
+    model_client=OpenAIChatCompletionClient(
+        model="deepseek/deepseek-r1:free",
+        api_key="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",
+        base_url="https://openrouter.ai/api/v1",
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+    ),
+)
+
+m1_team = MagenticOneGroupChat(
+    [fs, agent, surfer, coder, executor, user_proxy],
+    model_client=OpenAIChatCompletionClient(
+        model="deepseek/deepseek-r1:free",
+        api_key="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",
+        base_url="https://openrouter.ai/api/v1",
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+    ),
+    max_turns=60,
+    termination_condition=TextMentionTermination("TERMINATE"),
+)
+
+config = m1_team.dump_component()
+
+with open("/workspaces/multiagent-demo/src/m1_code_example_config.json", "w") as file:
+    file.write(config.model_dump_json())
