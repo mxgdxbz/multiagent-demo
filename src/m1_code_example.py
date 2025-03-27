@@ -61,7 +61,7 @@ agent = AssistantAgent(
 surfer = MultimodalWebSurfer(
     "WebSurfer",
     model_client=OpenAIChatCompletionClient(
-        model="deepseek/deepseek-r1:free",
+        model="google/gemini-2.0-flash-exp:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
@@ -69,12 +69,12 @@ surfer = MultimodalWebSurfer(
 )
 
 m1_team = MagenticOneGroupChat(
-    [fs, agent, surfer, coder, executor, user_proxy],
+    [fs, agent, surfer, coder, executor],
     model_client=OpenAIChatCompletionClient(
-        model="deepseek/deepseek-r1:free",
+        model="google/gemini-2.0-flash-exp:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
+        model_info=ModelInfo(vision=True, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
     max_turns=60,
     termination_condition=TextMentionTermination("TERMINATE"),

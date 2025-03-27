@@ -9,7 +9,7 @@ from autogen_agentchat.ui import Console
 from autogen_core.models import ModelFamily
 
 agent = AssistantAgent(
-    name="Assistant Agent",
+    name="AssistantAgent",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
         api_key="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",
@@ -21,7 +21,7 @@ agent = AssistantAgent(
 surfer = MultimodalWebSurfer(
     "WebSurfer",
     model_client=OpenAIChatCompletionClient(
-        model="deepseek/deepseek-r1:free",
+        model="google/gemini-2.0-flash-exp:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
@@ -35,7 +35,7 @@ config = agent_team.dump_component()
 with open("/workspaces/multiagent-demo/src/ag_code_example_config.json", "w") as file:
     file.write(config.model_dump_json())
 
-async def main(task = "Summarize the state of GLP-1 drug development"):
+async def main(task = "Search the web and summarize the current state of GLP-1 drug development"):
     await Console(agent_team.run_stream(task=task))
 
 asyncio.run(main())    
