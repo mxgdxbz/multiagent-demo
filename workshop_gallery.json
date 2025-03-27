@@ -5,7 +5,7 @@
   "metadata": {
     "author": "Jacob Albrecht",
     "created_at": "2025-02-21T20:43:06.400850",
-    "updated_at": "2025-02-21T20:43:07.501068",
+    "updated_at": "2025-03-21T20:43:07.501068",
     "version": "0.0.1",
     "description": "A demo gallery containing basic components for human-in-loop conversations",
     "tags": ["human-in-loop", "assistant", "web agents"],
@@ -117,32 +117,18 @@
         "component_type": "model",
         "version": 1,
         "component_version": 1,
-        "description": "Local Mistral-7B model client for instruction-based generation (Ollama, LMStudio).",
-        "label": "Mistral-7B Local",
+        "description": "Chat completion client for Deepseek-R1, free tier hosted by OpenRouter.io.",
+        "label": "deepseek-r1",
         "config": {
-          "model": "TheBloke/Mistral-7B-Instruct-v0.2-GGUF",
+          "model": "deepseek/deepseek-r1:free",
+          "api_key": "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",
           "model_info": {
             "vision": false,
             "function_calling": true,
-            "json_output": false,
+            "json_output": true,
             "family": "unknown"
           },
-          "base_url": "http://localhost:1234/v1"
-        }
-      },
-      {
-        "provider": "autogen_ext.models.openai.AzureOpenAIChatCompletionClient",
-        "component_type": "model",
-        "version": 1,
-        "component_version": 1,
-        "description": "GPT-4o Mini Azure OpenAI model client.",
-        "label": "AzureOpenAI GPT-4o-mini",
-        "config": {
-          "model": "gpt-4o-mini",
-          "api_key": "sk-...",
-          "azure_endpoint": "https://{your-custom-endpoint}.openai.azure.com/",
-          "azure_deployment": "{your-azure-deployment}",
-          "api_version": "2024-06-01"
+          "base_url": "https://openrouter.ai/api/v1"
         }
       },
       {
@@ -150,10 +136,29 @@
         "component_type": "model",
         "version": 1,
         "component_version": 1,
-        "description": "Chat completion client for OpenAI hosted models.",
-        "label": "OpenAIChatCompletionClient",
+        "description": "Chat completion client for Deepseek-R1, Uses search engine Exa.AI",
+        "label": "deepseek-r1 - Web Search",
         "config": {
-          "model": "deepseek/deepseek-r1:free",
+          "model": "deepseek/deepseek-r1:exa",
+          "api_key": "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",
+          "model_info": {
+            "vision": false,
+            "function_calling": true,
+            "json_output": true,
+            "family": "unknown"
+          },
+          "base_url": "https://openrouter.ai/api/v1"
+        }
+      },
+      {
+        "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+        "component_type": "model",
+        "version": 1,
+        "component_version": 1,
+        "description": "Chat completion client for Google Gemini",
+        "label": "gemini-2.0-flash",
+        "config": {
+          "model": "google/gemini-2.0-flash-exp:free",
           "api_key": "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",
           "model_info": {
             "vision": false,

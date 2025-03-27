@@ -8,4 +8,5 @@ echo 'source $(pwd)/.env' >> ~/.bashrc
 
 uv pip install -r requirements.txt
 git config --global --add safe.directory /workspaces/multiagent-demo
+playwright install-deps chromium
 

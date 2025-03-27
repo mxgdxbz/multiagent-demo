@@ -1,12 +1,15 @@
+import asyncio
 from autogen_agentchat.agents import AssistantAgent, CodeExecutorAgent, UserProxyAgent
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 from autogen_ext.agents.web_surfer import MultimodalWebSurfer
 from autogen_agentchat.conditions import TextMentionTermination
-from autogen_core.models import ModelInfo
+from autogen_core.models import ModelInfo, ModelFamily
 from autogen_agentchat.teams import MagenticOneGroupChat
 from autogen_ext.agents.file_surfer import FileSurfer
 from autogen_ext.agents.magentic_one import MagenticOneCoderAgent
 from autogen_ext.code_executors.local import LocalCommandLineCodeExecutor
+from autogen_agentchat.ui import Console
+
 
 fs = FileSurfer(
     "FileSurfer",
@@ -14,7 +17,7 @@ fs = FileSurfer(
         model="deepseek/deepseek-r1:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
 )
 
@@ -24,7 +27,7 @@ ws = MultimodalWebSurfer(
         model="deepseek/deepseek-r1:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
 )
 
@@ -34,7 +37,7 @@ coder = MagenticOneCoderAgent(
         model="deepseek/deepseek-r1:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
 )
 
@@ -46,12 +49,12 @@ executor = CodeExecutorAgent(
 user_proxy = UserProxyAgent("User")
 
 agent = AssistantAgent(
-    name="weather_agent",
+    name="assistant",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
 )
 
@@ -61,7 +64,7 @@ surfer = MultimodalWebSurfer(
         model="deepseek/deepseek-r1:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
 )
 
@@ -71,7 +74,7 @@ m1_team = MagenticOneGroupChat(
         model="deepseek/deepseek-r1:free",
         api_key="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",
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family="unknown"),
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
     max_turns=60,
     termination_condition=TextMentionTermination("TERMINATE"),
@@ -79,5 +82,12 @@ m1_team = MagenticOneGroupChat(
 
 config = m1_team.dump_component()
 
+
 with open("/workspaces/multiagent-demo/src/m1_code_example_config.json", "w") as file:
     file.write(config.model_dump_json())
+
+
+async def main(task = 'Create a database-backed tool to periodically monitor "innovation from China related to oncology"'):
+    await Console(m1_team.run_stream(task=task))
+
+asyncio.run(main())
