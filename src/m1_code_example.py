@@ -76,7 +76,7 @@ m1_team = MagenticOneGroupChat(
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=True, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
-    max_turns=60,
+    max_turns=10,
     termination_condition=TextMentionTermination("TERMINATE"),
 )
 
