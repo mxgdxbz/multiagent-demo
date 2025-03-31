@@ -9,5 +9,5 @@ echo 'source $(pwd)/.env' >> ~/.bashrc
 uv pip install -r requirements.txt
 uv tool install mcp-server-fetch  # for python based MCP server
 git config --global --add safe.directory /workspaces/multiagent-demo
-playwright install-deps chromium
+playwright install-deps chrome chromium
 

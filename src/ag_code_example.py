@@ -7,12 +7,13 @@ from autogen_agentchat.conditions import TextMentionTermination
 from autogen_core.models import ModelInfo
 from autogen_agentchat.ui import Console
 from autogen_core.models import ModelFamily
+import os
 
 agent = AssistantAgent(
     name="AssistantAgent",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
-        api_key="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",
+        api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
@@ -22,9 +23,9 @@ surfer = MultimodalWebSurfer(
     "WebSurfer",
     model_client=OpenAIChatCompletionClient(
         model="google/gemini-2.0-flash-exp:free",
-        api_key="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",
+        api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
+        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.UNKNOWN),
     ),
 )
 

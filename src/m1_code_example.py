@@ -9,13 +9,14 @@ from autogen_ext.agents.file_surfer import FileSurfer
 from autogen_ext.agents.magentic_one import MagenticOneCoderAgent
 from autogen_ext.code_executors.local import LocalCommandLineCodeExecutor
 from autogen_agentchat.ui import Console
+import os
 
 
 fs = FileSurfer(
     "FileSurfer",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
-        api_key="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",
+        api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
@@ -25,7 +26,7 @@ ws = MultimodalWebSurfer(
     "WebSurfer",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
-        api_key="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",
+        api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
@@ -35,7 +36,7 @@ coder = MagenticOneCoderAgent(
     "Coder",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
-        api_key="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",
+        api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
@@ -52,7 +53,7 @@ agent = AssistantAgent(
     name="assistant",
     model_client=OpenAIChatCompletionClient(
         model="deepseek/deepseek-r1:free",
-        api_key="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",
+        api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
@@ -62,7 +63,7 @@ surfer = MultimodalWebSurfer(
     "WebSurfer",
     model_client=OpenAIChatCompletionClient(
         model="google/gemini-2.0-flash-exp:free",
-        api_key="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",
+        api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
@@ -72,7 +73,7 @@ m1_team = MagenticOneGroupChat(
     [fs, agent, surfer, coder, executor],
     model_client=OpenAIChatCompletionClient(
         model="google/gemini-2.0-flash-exp:free",
-        api_key="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",
+        api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=True, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
