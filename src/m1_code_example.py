@@ -65,7 +65,7 @@ surfer = MultimodalWebSurfer(
         model="google/gemini-2.0-flash-exp:free",
         api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
-        model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
+        model_info=ModelInfo(vision=True, function_calling=True, json_output=True, family=ModelFamily.R1),
     ),
 )
 
