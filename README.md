@@ -3,7 +3,7 @@
 MultiAgent Demo is a project designed to facilitate the development and deployment of automated agents. This project provides a structured environment for building, testing, and running various agents in a cohesive manner.
 
 
-## Installation
+## Local Installation
 
 To get started with MultiAgent Demo, clone the repository and install the required dependencies:
 
@@ -13,12 +13,17 @@ cd multiagent-demo
 pip install -r requirements.txt
 ```
 
-## Usage
+## Quickstart
 
-To run the application, navigate to the `src/studio` directory and execute the `app.py` file:
+ - Use/ create a personal GitHub.com account
+ - Create your own fork of the repository at https://github.com/chepyle/multiagent-demo
+ - Run the repository in a GitHub Codespace
+
+
+To run the application, run the `run.sh` script:
 
 ```bash
-python app.py
+python ./run.sh
 ```
 
 ## Contributing
