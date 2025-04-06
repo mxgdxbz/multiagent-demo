@@ -10,7 +10,7 @@ APP_DIR=${1:-./app} # Use the first argument as the directory or default to ./ap
 
 read -sp "Enter password for unzip: " PASSWORD
 echo
-
+# app was previously zipped with `zip -oer app.zip app/` which encrypts the zip file with a password
 unzip -oP "$PASSWORD" "${APP_DIR}.zip"
 
 autogenstudio ui --port 8081 --appdir "$APP_DIR"
