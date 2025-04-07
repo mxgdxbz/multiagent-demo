@@ -1,7 +1,7 @@
 streamlit
 openai==1.69.0
 jupyter
-autogen-agentchat==0.5.1
+autogen-agentchat
 autogen-ext[openai,magentic_one,mcp]
 autogenstudio==0.4.2
 pillow
