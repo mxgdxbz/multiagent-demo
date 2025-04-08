@@ -15,7 +15,7 @@ import os
 fs = FileSurfer(
     "FileSurfer",
     model_client=OpenAIChatCompletionClient(
-        model="deepseek/deepseek-r1:free",
+        model="openrouter/quasar-alpha",
         api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
@@ -25,7 +25,7 @@ fs = FileSurfer(
 ws = MultimodalWebSurfer(
     "WebSurfer",
     model_client=OpenAIChatCompletionClient(
-        model="deepseek/deepseek-r1:free",
+        model="openrouter/quasar-alpha",
         api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
@@ -35,7 +35,7 @@ ws = MultimodalWebSurfer(
 coder = MagenticOneCoderAgent(
     "Coder",
     model_client=OpenAIChatCompletionClient(
-        model="deepseek/deepseek-r1:free",
+        model="openrouter/quasar-alpha",
         api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),
@@ -52,7 +52,7 @@ user_proxy = UserProxyAgent("User")
 agent = AssistantAgent(
     name="assistant",
     model_client=OpenAIChatCompletionClient(
-        model="deepseek/deepseek-r1:free",
+        model="openrouter/quasar-alpha",
         api_key=os.environ['OPENROUTER_API_KEY'],
         base_url="https://openrouter.ai/api/v1",
         model_info=ModelInfo(vision=False, function_calling=True, json_output=True, family=ModelFamily.R1),

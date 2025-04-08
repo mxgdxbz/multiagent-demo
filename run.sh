@@ -1,5 +1,7 @@
 #! /usr/bin/bash
 
+# run this to start the app
+# This script is used to start the Autogen Studio UI with a specified app directory.
 
 if [ "$#" -gt 1 ]; then
   echo "Error: Too many arguments provided. Only one argument is allowed."

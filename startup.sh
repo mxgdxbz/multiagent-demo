@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# python setup
+# python setup for codespace
 uv venv
 source .venv/bin/activate
 echo "export PATH=$PATH" >> ~/.bashrc

@@ -36,7 +36,10 @@
 				"ms-toolsai.jupyter-renderers",
 				"github.vscode-github-actions",
 				"analytic-signal.preview-pdf"
-			]
+			],
+            "settings": {
+                "python.defaultInterpreterPath": "./.venv/bin/python"
+            }
 		}
 	}
 }
