@@ -7458,7 +7458,7 @@ main {
 <li>Surf the web and run code <em>automatically</em></li>
 <li>Get your computer ready to follow along</li>
 </ul>
-<img alt="No description has been provided for this image" src="./images/qrcode_chepyle.github.io.png" width="240"/>
+<img alt="No description has been provided for this image" src="https://raw.githubusercontent.com/chepyle/multiagent-demo/refs/heads/main/images/qrcode_chepyle.github.io.png" width="240"/>
 </div>
 </div>
 </div>
@@ -7539,6 +7539,23 @@ main {
 </div>
 </div>
 </div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Quick-Start:-Tutorial">Quick Start: Tutorial<a class="anchor-link" href="#Quick-Start:-Tutorial">¶</a></h2><ol>
+<li>Go to <a href="https://github.com/chepyle/multiagent-demo">https://github.com/chepyle/multiagent-demo</a> - contains all workshop materials</li>
+<li>Click "fork project" to create your own copy</li>
+<li>Click Code &gt; Codespaces &gt; Start Codespace from main branch</li>
+<li>Wait for codespace to load</li>
+<li>Type <code>./run.sh</code> at the terminal to create an app, use password <code>sapa</code></li>
+<li>Click the link or go to <a href="https://localhost:8081">https://localhost:8081</a> if running on your local machine</li>
+</ol>
+</div>
+</div>
+</div>
 </div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7604,7 +7621,7 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Core-Concepts">Core Concepts<a class="anchor-link" href="#Core-Concepts">¶</a></h2><ul>
-<li><p>Multi-Agnet Building Blocks</p>
+<li><p>Multi-Agent Building Blocks</p>
 <ul>
 <li>Tools</li>
 <li>Models</li>
@@ -7665,7 +7682,7 @@ main {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Multi-Agent-Teams-%F0%9F%A7%91%E2%80%8D%F0%9F%A4%9D%E2%80%8D%F0%9F%A7%91">Multi-Agent Teams 🧑‍🤝‍🧑<a class="anchor-link" href="#Multi-Agent-Teams-%F0%9F%A7%91%E2%80%8D%F0%9F%A4%9D%E2%80%8D%F0%9F%A7%91">¶</a></h2><p>Tasks can be decomoposed and assigned to multiple agents with roles</p>
+<h2 id="Multi-Agent-Teams-%F0%9F%A7%91%E2%80%8D%F0%9F%A4%9D%E2%80%8D%F0%9F%A7%91">Multi-Agent Teams 🧑‍🤝‍🧑<a class="anchor-link" href="#Multi-Agent-Teams-%F0%9F%A7%91%E2%80%8D%F0%9F%A4%9D%E2%80%8D%F0%9F%A7%91">¶</a></h2><p>Tasks can be decomoposed and assigned to multiple agents with roles and personas</p>
 <p>e.g. Writer/Editor , Resarcher/Summarizer/Verifyer teams</p>
 <p>More examples from Autogen Studo creator at <a href="https://multiagentbook.com/labs/">https://multiagentbook.com/labs/</a></p>
 </div>
@@ -7763,27 +7780,31 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Practical-Considerations">Practical Considerations<a class="anchor-link" href="#Practical-Considerations">¶</a></h2><p><strong>What LLM to use?</strong></p>
-<p>Performance: Read articles, or check leaderboards e.g. <a href="https://lmarena.ai/?leaderboard">https://lmarena.ai/?leaderboard</a></p>
+<p>Performance: Read articles, or check leaderboards e.g. <a href="https://lmarena.ai/?leaderboard">lmarena</a>, <a href="https://artificialanalysis.ai/">Artificial Analysis</a></p>
 <p>Cost, Latency: compare at <a href="https://openrouter.ai/models">https://openrouter.ai/models</a></p>
 <p>Capabilities: Support for Tool use, output structured information and/or logprobs</p>
 <p><strong>Implementing code</strong></p>
 <p>Once a multi-agent system yield promising results, it can be exported as code for automatic testing</p>
 <p><strong>Common Errors</strong></p>
-<p><code>openai.NotFoundError: Error code: 404 - {'error': {'message': 'No endpoints found that support tool use</code> The selected model does not support tools, try using OpenAI, Gemini, Qwen-Turbo</p>
-<p><code>Exception: 'NoneType' object is not subscriptable</code> Model call did not return a result.  Can be due to latency on the provider side, but likely hitting limits of free-tier models.</p>
+<p><code>openai.NotFoundError: Error code: 404 - {'error': {'message': 'No endpoints found that support tool use...</code></p>
+<p>The selected model does not support tools, try using OpenAI, Gemini, Qwen-Turbo</p>
+<p><code>Exception: 'NoneType' object is not subscriptable</code></p>
+<p>Model call did not return a result.  Can be due to latency on the provider side, but likely hitting limits of free-tier models.</p>
+<p><em>"I made a change to the team, but I dont see a difference"</em></p>
+<p>The teams and components are represented by JSON, making changes to components may not update uses elsewhere.  Edit JSON directly to make sure changes are implemented.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput">
 </div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Our-Tasks:">Our Tasks:<a class="anchor-link" href="#Our-Tasks:">¶</a></h1><p>Web search:  "Search the web and summarize the current state of GLP-1 drug development, create a PDF report"</p>
+<h1 id="Our-Tasks:">Our Tasks:<a class="anchor-link" href="#Our-Tasks:">¶</a></h1><p>Web search:</p>
+<p><strong>"Search the web and summarize the current state of GLP-1 drug development, create a markdown-formatted report to document the findings, be sure to include references to your sources"</strong></p>
 <p>Coder/Analyst/Web:</p>
-<p>Research "innovation from China related to oncology" , write code to create a database to store the key players and research subjects, with the goal of refreshing the database over time</p>
+<p><strong>Research "innovation from China related to oncology" , write code to create a database to store the key players and research subjects, with the goal of refreshing the database over time</strong></p>
 </div>
 </div>
 </div>
@@ -7793,9 +7814,9 @@ main {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Example-Agent-Files">Example Agent Files<a class="anchor-link" href="#Example-Agent-Files">¶</a></h1><p>A finished version of the workshop tasks are available in the <code>./final_app.zip</code> folder.</p>
-<p>To use in autogen studio run:  <code>./run.sh final_app</code>, password <code>sapa</code></p>
-<p>Code examples are in <code>./src/</code></p>
+<h1 id="Example-Agent-Files">Example Agent Files<a class="anchor-link" href="#Example-Agent-Files">¶</a></h1><p>A finished version of the workshop tasks are available in the <code>./app.zip</code> folder.</p>
+<p>To use in autogen studio run:  <code>./run.sh</code>, password <code>sapa</code></p>
+<p>Code examples are in <code>./src/</code> Be sure to use the environment variable <code>OPENROUTER_API_KEY</code></p>
 </div>
 </div>
 </div>
@@ -7810,7 +7831,7 @@ main {
 <img alt="No description has been provided for this image" src="https://raw.githubusercontent.com/chepyle/multiagent-demo/refs/heads/main/images/qrcode_github.com.png" width="240"/>
 </p>
 <p><em>To use this code after the workshop, be sure to replace any api keys and base urls with the info from your LLM provider of choice</em></p>
-<p>As Autogen Studio (currently v 0.4.2) changes, this code will become obsolete- the learning never stops!</p>
+<p>As Autogen Studio (currently v 0.4.2) changes, this code will become obsolete, but the learning never stops!</p>
 </div>
 </div>
 </div>
