@@ -2,6 +2,7 @@
 
 MultiAgent Demo is a project designed to facilitate the development and deployment of automated agents. This project provides a structured environment for building, testing, and running various agents in a cohesive manner.
 
+**Presentation Slides [Here](https://chepyle.github.io/multiagent-demo/)**
 
 ## Local Installation
 
