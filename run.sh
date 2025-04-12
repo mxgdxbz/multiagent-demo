@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#!/usr/bin/env bash
 
 # run this to start the app
 # This script is used to start the Autogen Studio UI with a specified app directory.
